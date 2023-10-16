@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+ def after_sign_in_path_for(resource)#サインイン後に何処に遷移するかだからindexにしたい
+   books_path
+ end
+
+ def after_sign_out_path_for(resource)#サインアウト後にどこに遷移するかだからログイン画面にしたい
+   about_path
+ end
+
   protected
 
   def configure_permitted_parameters
