@@ -1,2 +1,9 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<%= render 'books/list', user: @user, book: @book_new %>
+
+<h1>Book detail</h1>
+<p>name</p>
+<p><%= @book.title %></p>
+<p><%= @book.body %></p>
+<!--edit,destroyのリンク-->
+<%= link_to "edit", edit_book_path(@book.id) %>
+<%= link_to "Destroy", book_path(@book.id),method: :delete, "data-confirm" => "本当に削除しますか？" %>

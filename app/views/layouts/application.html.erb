@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>Bookers2 </title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -15,10 +15,10 @@
     <header>
       <% if user_signed_in? %>
         <h2>
-          <%= link_to "Bookers" %>
+          <%= link_to "Bookers" ,root_path %>
         </h2>
         <li>
-          <%= link_to "Home" %>
+          <%= link_to "Home" , %><!--users_pathになる-->
         </li>
         <li>
           <%= link_to "Users" %>
@@ -31,13 +31,13 @@
         </li>
       <% else %>
         <h2>
-          <%= link_to "Bookers" %>
+          <%= link_to "Bookers" ,root_path %>
         </h2>
         <li>
-          <%= link_to "Home" %>
+          <%= link_to "Home" ,root_path %>
         </li>
         <li>
-          <%= link_to "About" %>
+          <%= link_to "About" ,about_path %>
         </li>
         <li>
           <%= link_to "Sign up", new_user_registration_path %>
@@ -48,5 +48,6 @@
       <% end %>
     </header>
     <%= yield %>
+    <footer>CopyRight Infratop.inc</footer>
   </body>
 </html>

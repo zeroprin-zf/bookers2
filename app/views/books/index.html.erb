@@ -1,23 +1,11 @@
-<h1>User info</h1>
-<h2>name</h2>
-<p><%= @user.name %></p>
-<h2>introduction</h2>
-<p><%= @user.introduction %></p>
-
-
-<h1>New book</h1><!--このページをログイン後の遷移先にする-->
-  <%= form_with model: @book do |f| %>
-  <h5>Title</h5>
-  <%= f.text_field :title %>
-  <h5>Opinion</h5>
-  <%= f.text_area :body %>
-  <%= f.submit 'Create Book' %>
-<% end %>
+<%= render 'list', user: @user , book: @book %>
 
 <h1>Books</h1>
 <% @books.each do |book| %>
+<!--%= image_tag 'no_image.jpg' %投稿一覧で使う。ここは自分が投稿した-->
 <p>Title</p>
 <span><%= book.title %></span>
 <p>Opinion</p>
 <span><%= book.body %></span>
 <% end %>
+<!--自分の投稿一覧と人の投稿一覧を変える記述がいるかもif文?-->
