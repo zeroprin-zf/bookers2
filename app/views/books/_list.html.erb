@@ -1,8 +1,12 @@
 <h1>User info</h1>
+<%= image_tag user.get_profile_image(100,100) %>
 <h2>name</h2>
 <p><%= user.name %></p>
 <h2>introduction</h2>
 <p><%= user.introduction %></p>
+<p><%= link_to "編集", edit_user_path(user.id) %></p>
+
+
 
 
 <h1>New book</h1>
