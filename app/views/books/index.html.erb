@@ -1,13 +1,29 @@
 <%= render 'list', user: @user , book: @book %>
 
-<h1>Books</h1><!--このページは全部のアカウントが投稿した本の一覧-->
+<h1>Books</h1>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+    </thead>
+
 <% @books.each do |book| %>
-<!--%= image_tag 'no_image.jpg' %投稿一覧で使う。ここは自分が投稿した-->
-<%= image_tag book.get_image %>
-<!--%= image_tag 'no_image.jpg'%使うかも-->
-<p>Title</p>
-<span><%= book.title %></span>
-<p>Opinion</p>
-<span><%= book.body %></span>
+   <tbody>
+    <tr>
+      <td><%= image_tag book.get_image %></td>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+    </tr>
+   </tbody>
 <% end %>
-<!--自分の投稿一覧と人の投稿一覧を変える記述がいるかもif文?-->
+  </table>
+</body>
+
+<!--%= image_tag 'no_image.jpg' %投稿一覧で使う。ここは自分が投稿した-->
+
+<!--%= image_tag 'no_image.jpg'%使うかも-->
+
