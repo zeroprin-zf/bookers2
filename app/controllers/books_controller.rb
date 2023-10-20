@@ -16,7 +16,7 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id#showに遷移した時にrouteエラーが出てた
     if @book.save
       flash[:notice] = "You have created book successfully."
-      redirect_to user_path(@user.id)#book_path(@book.id)
+      redirect_to book_path(@book.id)#book_path(@book.id)
     else
       render :books_path
     end
@@ -54,5 +54,5 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
    end
 
-   
+
 end
