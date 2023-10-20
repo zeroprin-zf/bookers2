@@ -4,6 +4,4 @@
 <p><%= user.name %></p>
 <h2>introduction</h2>
 <p><%= user.introduction %></p>
-<% if user == current_user %>
- <p><%= link_to "編集", edit_user_path(user.id) %></p>
-<% end %>
+<%= link_to "編集", edit_user_path(user.id) %>

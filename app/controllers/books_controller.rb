@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
- before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   def new
     @book = Book.new
   end
@@ -13,10 +12,11 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    @book.user_id = current_user.id
+    @user = current_user#showに遷移した時にrouteエラーが出てた
+    @book.user_id = current_user.id#showに遷移した時にrouteエラーが出てた
     if @book.save
       flash[:notice] = "You have created book successfully."
-      redirect_to book_path(@book.id)#遷移画面はホームに近い
+      redirect_to user_path(@user.id)#book_path(@book.id)
     else
       render :books_path
     end
@@ -54,10 +54,5 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
    end
 
-   #def is_matching_login_user
-    #book = Book.find(params[:id])
-    #unless user.id == current_user.id
-     # redirect_to book_path(params[:id])
-    #end
-   #end
+   
 end
