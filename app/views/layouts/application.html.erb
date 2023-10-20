@@ -2,9 +2,9 @@
 <html>
   <head>
     <title>Bookers2 </title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <script src="https://kit.fontawesome.com/04f10c2a51.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -47,7 +47,19 @@
         </li>
       <% end %>
     </header>
-    <%= yield %>
+    <main>
+      <div>
+        <%= flash[:notice] %>
+      </div>
+       <%= yield %>
+    </main>
     <footer>CopyRight Infratop.inc</footer>
   </body>
 </html>
+
+<!--サインイン　Welcome! You have signed up successfully.
+    ログイン　Signed in successfully.
+    ログアウト　Signed out successfully.
+　　ユーザーの更新　You have updated user successfully.
+　　新規投稿が成功　You have created book successfully.
+　　本の編集が成功した時　You have updated book successfully.-->
