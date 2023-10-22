@@ -1,7 +1,27 @@
+　<head>
+　  <script src="https://kit.fontawesome.com/04f10c2a51.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
 <h1>User info</h1>
 <%= image_tag user.get_profile_image %>
-<h2>name</h2>
-<p><%= user.name %></p>
-<h2>introduction</h2>
-<p><%= user.introduction %></p>
-<%= link_to "編集", edit_user_path(user.id) %>
+<div class="container">
+  <div class= "row">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">name</th>
+          <td><%= user.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">introduction</th>
+          <td><%= user.introduction %></td>
+        </tr>
+      </tbody>
+    </table>
+   <%= link_to  edit_user_path(user.id),class: "btn btn-outline-secondary btn-block" do %>
+    <i class="fa-solid fa-user-gear"></i>
+   <% end %>
+  </div>
+</div>

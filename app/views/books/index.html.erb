@@ -7,34 +7,36 @@
  </ul>
 <% end %>
 
+<div class="container">
+  <div class="row">
+    <div class= "col-md-3">
+     <%= render 'template/user', user: @user %>
+     <%= render 'template/book', book: @book %>
+    </div>
 
-<%= render 'template/user', user: @user %>
-<%= render 'template/book', book: @book %>
+      <div class="offset-md-1 col-md-8">
+        <h1>Books</h1>
+        <body>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Title</th>
+                <th scope="col">Opinion</th>
+              </tr>
+            </thead>
 
-<h1>Books</h1>
-<body>
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th>Title</th>
-        <th>Opinion</th>
-      </tr>
-    </thead>
-
-<% @books.each do |book| %>
-   <tbody>
-    <tr>
-      <td><%= image_tag book.user.get_profile_image %></td><!--現状@userのプロフィール画像が繰り返されてる-->
-      <td><%= link_to book.title, book_path(book.id) %></td>
-      <td><%= book.body %></td>
-    </tr>
-   </tbody>
-<% end %>
-  </table>
-</body>
-
-<!--%= image_tag 'no_image.jpg' %投稿一覧で使う。ここは自分が投稿した-->
+        <% @books.each do |book| %>
+           <tbody>
+            <tr>
+              <td scope="col"><%= image_tag book.user.get_profile_image %></td><!--現状@userのプロフィール画像が繰り返されてる-->
+              <td scope="col"><%= link_to book.title, book_path(book.id) %></td>
+              <td colspan="2"><%= book.body %></td>
+            </tr>
+           </tbody>
+        <% end %>
+          </table>
+        </body>
 
 <!--%= image_tag 'no_image.jpg'%使うかも-->
 

@@ -11,51 +11,69 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <% if user_signed_in? %>
-        <h2>
-          <%= link_to "Bookers" ,root_path %>
-        </h2>
-        <li>
-          <%= link_to "Home" , user_path(current_user) %><!--こんなんありなんだ-->
-        </li>
-        <li>
-          <%= link_to "Users" , users_path %><!--user.indexに遷移-->
-        </li>
-        <li>
-          <%= link_to "Books" , books_path %><!--books.indexに遷移-->
-        </li>
-        <li>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <h2>
-          <%= link_to "Bookers" ,root_path %>
-        </h2>
-        <li>
-          <%= link_to "Home" ,root_path %>
-        </li>
-        <li>
-          <%= link_to "About" ,about_path %>
-        </li>
-        <li>
-          <%= link_to "Sign up", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "Log in", new_user_session_path %>
-        </li>
-      <% end %>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm  bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3 text-white" href="/">Bookers</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <i class="fa-solid fa-house text-white"></i><%= link_to "Home" , user_path(current_user) %><!--こんなんありなんだ-->
+              </li>
+              <li class="nav-item">
+                <i class="fa-solid fa-users text-white"></i><%= link_to "Users" , users_path %><!--user.indexに遷移-->
+              </li>
+              <li class="nav-item">
+                <i class="fa-solid fa-book-open text-white"></i><%= link_to "Books" , books_path %><!--books.indexに遷移-->
+              </li>
+              <li class="nav-item">
+                <i class="fa-solid fa-right-from-bracket text-white"></i><%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <!--h2-->
+                <!--%= link_to "Bookers" ,root_path % -->
+              <!--/h2-->
+              <li class="nav-item">
+                <i class="fa-solid fa-house text-white"></i><%= link_to "Home" ,root_path %>
+              </li>
+              <li class="nav-item">
+                <i class="fa-solid fa-link text-white"></i><%= link_to "About" ,about_path %>
+              </li>
+              <li class="nav-item">
+                <i class="fa-solid fa-user-plus text-white"></i><%= link_to "Sign up", new_user_registration_path %>
+              </li>
+              <li class="nav-item">
+                <i class="fa-solid fa-right-to-bracket text-white"></i><%= link_to "Log in", new_user_session_path %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
-    <main>
-      <div>
+     <main class="mb-auto">
+       <div>
         <%= flash[:notice] %>
       </div>
        <%= yield %>
-    </main>
-    <footer>CopyRight Infratop.inc</footer>
+       <footer class="pt-5 pb-4">
+         <div class="container">
+           <div class="row no-gutters text-center">
+             <div class="col">
+               <p>CopyRight Infratop.inc</p>
+             </div>
+           </div>
+         </div>
+       </footer>
+     </main>
   </body>
-</html>
+ </html>
 
 <!--サインイン　Welcome! You have signed up successfully.
     ログイン　Signed in successfully.

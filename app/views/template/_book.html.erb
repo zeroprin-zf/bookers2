@@ -5,7 +5,9 @@
   <%= f.text_field :title %>
   <h5>Opinion</h5>
   <%= f.text_area :body %>
-  <%= f.submit 'Create Book' %>
+    <button class="btn btn-primary" type="submit">
+      Create Book
+    </button>
 <% end %>
 
 <!--テンプレートを使ってルートエラーが出たときはコントローラで変数を定義してない可能性が高い-->

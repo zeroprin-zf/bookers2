@@ -1,25 +1,32 @@
-<%= render 'template/user', user: @user_s %>
-<%= render 'template/book', book: @book %>
+<div class="container">
+  <div class="row">
+    <div class= "col-md-3">
+      <%= render 'template/user', user: @user_s %>
+      <%= render 'template/book', book: @book %>
+    </div>
 
-<h1>Users</h1>
-<body>
-  <table>
-    <thead>
-      <tr>
-        <th>image</th>
-        <th>name</th>
-      </tr>
-    </thead>
+      <div class="offset-md-1 col-md-8">
+        <h1>Users</h1>
+        <body>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">image</th>
+                <th scope="col">name</th>
+              </tr>
+            </thead>
 
-    <% @user.each do |user| %><!--ここにuserの一覧が-->
-    <tbody>
-      <tr>
-        <td><%= image_tag user.get_profile_image %></td>
-        <td><%= user.name %></td>
-        <td><%= link_to "show", user_path(user.id) %></td>
-      </tr>
-    </tbody>
-    <% end %>
-
-  </table>
-</body>
+            <% @user.each do |user| %><!--ここにuserの一覧が-->
+            <tbody>
+              <tr>
+                <td scope="col"><%= image_tag user.get_profile_image %></td>
+                <td scope="col"><%= user.name %></td>
+                <td colspan="2"><%= link_to "show", user_path(user.id) %></td>
+              </tr>
+            </tbody>
+            <% end %>
+          </table>
+        </body>
+    </div>
+  </div>
+</div>
