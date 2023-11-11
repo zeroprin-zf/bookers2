@@ -36,6 +36,7 @@
               <%= book.title %><% end %>
               </td>
               <td colspan="2"><%= book.body %></td>
+              <td><%= render "favorites/btn", book: book %></td>
             </tr>
            </tbody>
         <% end %>

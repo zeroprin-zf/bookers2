@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+  resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy] #いいねのIDをURLに含める必要はない。resourceを使用するとほかのリソースとの関連付けに寄って特定できる
+  end
   resources :users, only: [:index, :show, :edit, :update]
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'

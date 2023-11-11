@@ -1,9 +1,15 @@
 class Book < ApplicationRecord
   has_one_attached :image
   belongs_to :user
+  has_many :favorites, dependent: :destroy
 
   validates :title, presence: true
   validates :body, length: {in: 1..200}
+
+  def favorited_by?(user) #メソッドの定義。userは引数。ユーザーオブジェクト。
+    favorites.exists?(user_id: user.id)
+  end
+  #特定のユーザーによっていいねされているか判定できる
 
   #def get_image
     #unless image.attached?
