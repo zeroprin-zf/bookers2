@@ -18,10 +18,25 @@
           <th scope="row">introduction</th>
           <td><%= user.introduction %></td>
         </tr>
+        <tr>
+          <th>follows</th>
+          <th><%= link_to user.followings.count, user_followings_path(user) %></th>
+        </tr>
+        <tr>
+          <th>followers</th>
+          <th><%= link_to user.followers.count, user_followers_path(user) %></th>
+        </tr>
       </tbody>
     </table>
-   <%= link_to  edit_user_path(user.id),class: "btn btn-outline-secondary btn-block" do %>
-    <i class="fa-solid fa-user-gear"></i>
-   <% end %>
+
+    <div class="row">
+      <% if current_user != user %>
+       <td><%= render "relationships/btn", user: user, options: { class:""} %></td>
+      <% else %>
+       <%= link_to  edit_user_path(user.id),class: "btn btn-outline-secondary btn-block" do %>
+         <i class="fa-solid fa-user-gear"></i>
+      <% end %>
+     <% end %>
+    </div>
   </div>
 </div>

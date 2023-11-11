@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy] #いいねのIDをURLに含める必要はない。resourceを使用するとほかのリソースとの関連付けに寄って特定できる
   end
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    resource :relationships, only: [:create, :destroy]
+        get "followings" => "relationships#followings", as: "followings"
+        get "followers" => "relationships#followers", as: "followers"
+  end
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'
   get "home/about" => 'homes#about', as:'about'

@@ -21,6 +21,9 @@
               <tr>
                 <td scope="col"><%= image_tag user.get_profile_image %></td>
                 <td scope="col"><%= user.name %></td>
+                <td scome="col">フォロー数: <%= user.followings.count %></td>
+                <td scome="col">フォロワー数: <%= user.followers.count %></td>
+                <td scome="col"><%= render "relationships/btn", user: user, options: { class: "follow-link" } %></td>
                 <td colspan="2"><%= link_to "Show", user_path(user.id) %></td>
               </tr>
             </tbody>
